@@ -1,16 +1,23 @@
 ---
 layout: default
-description: "Sorry, Page Not Found :("
+description: "找不到页面"
 ---
 
 {% include header.html %}
 
 <header class="g-banner np-banner {{ site.postPatterns | prepend: 'post-pattern-' }}" data-theme="{{ site.theme-color }}">
     <div class="post-wrapper">
-        <h1>404</h1>
-        <span class="subheading">{{ page.description }}</span>
-        <a href="{{ site.nav.home }}" class="btn">Back to home</a>
+        <h1>{{ page.description }}</h1>
+        <span class="subheading">很抱歉，此页面不存在或已被删除！</span>
+        <a href="/" class="btn">返回首页</a>
     </div>
 </header>
 
-
+<!-- NOTE: 托管在 GitHub Pages 上的网站不需要这段代码 -->
+<!-- <script>
+    if(!location.pathname.includes('.')){
+        if(!location.pathname.endsWith("/") && !location.pathname.endsWith(".html")){
+            location.pathname += ".html"
+        }
+    }
+</script> -->

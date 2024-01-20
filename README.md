@@ -1,3 +1,27 @@
+## Jekyll-Theme-H2O-Plus
+
+这是 [kaeyleo/jekyll-theme-H2O](https://github.com/kaeyleo/jekyll-theme-H2O) 的增强版，我增加/修改了以下功能：
+
+1. 博客界面更加紧凑。
+2. 将所有依赖项升级，现在你可以使用 Node.js 18 来执行 gulp 了。
+3. 将大量内容汉化。
+4. 独立搜索页面，支持跳转 Bing 全文搜索。
+5. 新增 `info` 排版，增加“关于博客”页面。
+6. 夜间模式从定时改为自适应。
+7. 将 Disqus 换成了 Giscus。
+8. 文章版权声明可在 `_config.yml` 中自定义
+9. 提供了 GitHub Workflow，快速创建 GitHub Pages 博客，无需完整复制主题。
+
+### 如何使用本主题
+
+1. 将文件夹 `_github` 复制到你的博客仓库下，改名为 `.github`。
+2. 将 `_config.yml` 复制到你的博客仓库下，完整浏览一遍，并修改配置。
+3. 复制你想修改的文件到你的仓库，它们会覆盖掉主题提供的文件，比如 `favicon.ico` 和 `assets/img/profile.png`。
+
+你可以在 [我的博客](https://peasoft.github.io/) 预览主题。
+
+以下为原 README，其中标中括号的部分是我修改的：
+
 ## jekyll-theme-H2O
 
 基于Jekyll的博客主题模板，简洁轻量。
@@ -28,7 +52,7 @@ Using your smartphone to scan the QR Code
 
 - 代码高亮
 - 夜间模式
-- Disqus评论系统
+- Disqus评论系统 [Plus 已改成 Giscus]
 - 粉蓝两种主题色
 - 头图个性化底纹
 - 响应式设计
@@ -42,7 +66,7 @@ Using your smartphone to scan the QR Code
 
 - Code highlight
 - Night mode
-- Disqus Comment System
+- Disqus Comment System [Plus is Giscus]
 - Theme color: Blue & Pink
 - Hero Patterns
 - Responsive design
@@ -54,17 +78,19 @@ Using your smartphone to scan the QR Code
 
 ### Usage 快速开始
 
-首先你需要安装Jekyll，请查看文档: [快速指南](http://jekyll.com.cn/docs/quickstart/)
+首先你需要安装Jekyll，请查看文档: [快速指南](http://jekyll.com.cn/docs/quickstart/) [[另一份](https://jekyllcn.com/docs/installation/)]
 
-如果你已经安装了Jekyll，请检查版本是否为3.0.x，你可以使用 ```gem update jekyll``` 命令进行升级。
+如果你已经安装了Jekyll，请检查版本是否为3.0.x [Plus 版支持 3 和 4]，你可以使用 ```gem update jekyll``` 命令进行升级。
 
 使用 ```gem install jekyll-paginate``` 或 ```sudo gem install jekyll-paginate``` 安装Jekyll的分页插件。
 
-> H2O主题基于Jekyll 3.2.1版本，不同版本之间可能存在部分差异，具体请参考[官方更新文档](https://jekyllrb.com/news/)
+> H2O主题基于Jekyll 3.2.1版本，不同版本之间可能存在部分差异，具体请参考[官方更新文档](https://jekyllrb.com/news/) [经测试，3 和 4 没有差异]
 
 点击右上角Fork按钮在你的Github上创建分支，或者```clone```到本地。
 
 ``` git clone https://github.com/kaeyleo/jekyll-theme-H2O.git ```
+
+[Plus 版：```git clone https://github.com/peasoft/jekyll-theme-H2O-plus.git```]
 
 最后，在命令行输入 ```jekyll server``` 开启服务，就能在本地预览主题了。
 
@@ -125,7 +151,7 @@ You can easily get started by modifying _config.yml
 
 你可以通用修改 `_config.yml` 文件来轻松的开始搭建自己的博客
 
-```
+```yaml
 # Site settings
 title: '廖柯宇的独立博客' # 你的博客网站标题
 description: '很高兴能在这里与你分享我对技术和生活的思考。' # 站点描述
@@ -160,16 +186,16 @@ tags: jekyll 前端开发 设计
 
 博客顶部的导航栏信息需要以下面的格式进行配置：
 
-```
+```yaml
 # Navigation links
 nav:
   home: '/'
   tags: '/tags.html'
 ```
 
-导航链接需要写上完整的html文件名，它们都是放于根目录下的，如果自建文件夹，请务必在`exclude` 参数中增加自建文件夹的文件名:
+导航链接需要写上完整的html文件名 [GitHub Pages 建站可以不加 `.html`，但不推荐，那个 `s.html` 是为了更像动态页面所以没有加]，它们都是放于根目录下的，如果自建文件夹[并且你不想把它们放进你的网站]，请务必在`exclude` 参数中增加自建文件夹的文件名:
 
-```
+```yaml
 # Build settings
 exclude: ['node_modules', 'dev', 'package.json', '自定义的文件夹名字']
 ```
@@ -188,13 +214,14 @@ exclude: ['node_modules', 'dev', 'package.json', '自定义的文件夹名字']
 
 配置格式如下：
 
-```
+```yaml
 # SNS settings 配置社交网站url
 sns:
   weibo: '//weibo.com/lovecolcol'
   juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
   instagram: '//www.instagram.com/steveliaocn'
   github: '//github.com/kaeyleo'
+  email: 'mailto:no-reply@example.com' # 原版 README 漏了
 ```
 
 sns属性可选参数：
@@ -217,12 +244,13 @@ Dribbble | `dribbble`
 Behance | `behance`
 Medium | `medium`
 VK | `vk`
+Email | `email`
 
 #### 个人简介
 
 首页侧边栏和文章页面底部都会显示你的个人简介
 
-```
+```yaml
 # Author 配置博主信息
 author: 'Jack'
 nickname: 'xx'
@@ -234,7 +262,7 @@ avatar: 'assets/img/avatar.jpg'
 
 对侧边栏的标签模块进行相应配置：
 
-```
+```yaml
 # Tags
 recommend-tags: true
 recommend-condition-size: 12
@@ -256,7 +284,7 @@ Tags配置说明：
 
 搜索功能默认是开启的，以卡片的样式显示在侧边栏底部。如需关闭请将配置文件 `_config.yml` 中 `search ` 属性的值改为 `false` 。
 
-```
+```yaml
 # Search
 search: true
 ```
@@ -265,6 +293,8 @@ search: true
 ----|-----
 开启搜索功能 | `true`
 关闭搜索功能 | `false`
+
+[Plus 新增：无论是否开启搜索，Plus 都会建立一个搜索页面，支持输入搜索词回车跳转 Bing 进行全文搜索。此页面默认添加至 [导航栏](#导航)。]
 
 #### 代码高亮
 
@@ -276,7 +306,7 @@ search: true
 
 遵循 [HTML5](https://www.w3.org/TR/html5/grouping-content.html#the-pre-element) 标准，Prism 使用语义化的 `<pre>` 元素和 `<code>` 元素来标记代码区块：
 
-```
+```html
 <pre><code class="language-css">p { color: red }</code></pre>
 ```
 
@@ -303,9 +333,11 @@ search: true
 
 #### 夜间模式
 
+[Plus 修改：此功能已经移除，并被自适应夜间模式替代。这个选项现在没有作用。]
+
 晚11点至次日凌晨6点自动开启夜间模式。如果不需要，则将配置文件 `_config.yml` 中 `nightMode ` 属性的值改为 `false` 即可。
 
-```
+```yaml
 # Night mode
 nightMode: true
 ```
@@ -323,7 +355,7 @@ nightMode: true
 
 主要效果体现在首页博客封面、顶部导航栏的logo以及鼠标悬停时文字显示的颜色效果。
 
-```
+```yaml
 # theme color
 theme-color: 'default' # pink or default
 ```
@@ -350,7 +382,7 @@ header-img: assets/img/banner.jpg
 
 在没有图片的情况下单纯显示颜色会不会太无趣了点？于是想到了加入底纹元素，底纹素材是SVG格式的（保存在css样式里），加载比图片快很多。六种底纹（电路、食物、云海、钻石等等）供你选择，配置如下：
 
-```
+```yaml
 # Hero background patterns
 postPatterns: 'circuitBoard'
 ```
@@ -412,13 +444,13 @@ postPatterns: 'circuitBoard'
 
 值得注意的是，css及js的源码都在 `dev` 文件夹中，每一次保存 gulp 都会对它们进行处理并保存到 `assets` 文件夹以供 `_site` 上线环境使用。
 
-#### Disqus
+#### Disqus [Plus 已删除]
 
 [Disqus](https://disqus.com/)是一个第三方社交评论插件，体验相当不错。
 
 在配置文件 `_config.yml` 中找到comments的相关配置，设置 `disqus` 参数为 `true` 打开评论功能（ `false` 为关闭），并且设置 `disqus_url`。
 
-```
+```yaml
 # Comments
 comments:
 	disqus: true
@@ -427,11 +459,13 @@ comments:
 
 注：`disqus` 默认值为 `false`
 
+[在 Plus 版中，Disqus 已被 Giscus 替代。请找到 `giscus` 设置项，并按照指示设置 `giscus_script`。]
+
 #### Share.js
 
 为了让文章更方便地分享，使用了第三方分享插件[Share.js](https://github.com/overtrue/share.js)，支持一键分享到微博、QQ空间、QQ好友、微信、腾讯微博、豆瓣、Facebook、Twitter、Linkedin、Google+、点点等社交网站。
 
-```
+```yaml
 # Share
 social-share: true # 开启或者关闭分享功能
 social-share-items: ['wechat', 'weibo', 'douban','twitter']
@@ -453,3 +487,5 @@ Any types of contribution are welcome. Thanks.
 ### License 许可证
 
 Jekyll-Theme-H2O is licensed under [MIT](https://github.com/kaeyleo/jekyll-theme-H2O/blob/master/LICENSE).
+
+Jekyll-Theme-H2O-Plus is licensed under [MIT](LICENSE).

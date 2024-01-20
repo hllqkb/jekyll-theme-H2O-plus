@@ -1,8 +1,8 @@
 # Site settings 配置站点
-title: '廖柯宇的独立博客'
-description: '昵称悟空，千禧一代，前端开发者/伪极客/灵魂摄影师，热爱技术&设计。很高兴能在这里与你分享我对技术和生活的思考。'
-keyword: '廖柯宇, 廖柯宇的独立博客, 廖柯宇的博客, 前端, 前端开发, 前端博客, javascript, vuejs, nodejs, 设计'
-url: '' # your host
+title: '博客名称'
+description: '介绍一下'
+keyword: '关键词'
+url: 'https://你的用户名.github.io' # 修改成你的网址
 
 # when build blog on server, if you don't need baseurl, you should leave this value blank.
 # 在服务器上建站时，如果你不需要子域名，请将这一格留空
@@ -14,40 +14,40 @@ url: '' # your host
 # 但是，如果你创建了一个叫 "myblog" 的网站，此时网址会变成 "kaeyleo.github.io/myblog" ，这时再将 baseurl 设置为 '/myblog'
 baseurl: ''
 
-# Navigation links
+# Navigation links 导航链接
 nav:
-  home: '/'
-  tags: '/tags.html'
+  文章分类: '/tags.html'
+  搜索: '/s' # 注意：如果服务器不支持省略 '.html'，请将此项改为 '/s.html'
 
-# Footer
+# Footer 底栏
 footer:
-  since: 2017
+  since: 2023
 
 # Author 配置博主信息
-author: '廖柯宇'
-nickname: '悟空'
-bio: '前端开发者，热爱技术&设计，简单乐观爱创造'
-avatar: '/assets/img/profile.png'
+author: '你的名字'
+nickname: '你的昵称'
+bio: '你的简介'
+avatar: '/assets/img/profile.png' # 请把本设置对应的头像换成你的
 
-# Search
+# Search 搜索
 search: true
 
-# Night mode
-nightMode: true
+# Night mode 夜间模式 (Deprecated)
+nightMode: false
 
 # Comments 评论功能
 comments:
-  disqus: false
-  disqus_url: 'https://liaokeyu.disqus.com/embed.js'
+  giscus: false # 如果需要评论，请打开并按下一行配置
+  giscus_script: '请按照 https://giscus.app/zh-CN 的指示得到 script 标签，然后去掉换行放到这里'
 
 # MathJax 公式支持 by Ray-Eldath
 mathjax: true
 
-# Share
-social-share: true
+# Share 分享
+social-share: false
 social-share-items: ['wechat', 'weibo', 'douban', 'twitter']
 
-# theme color 主题皮肤
+# Theme color 主题皮肤
 theme-color: 'default'  # pink or default
 
 # Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
@@ -56,10 +56,8 @@ postPatterns: 'circuitBoard'
 # SNS settings 配置社交网站
 # url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
 sns:
-  weibo: '//weibo.com/lovecolcol'
-  juejin: '//juejin.im/user/57a6f434165abd006159b4cc'
-  instagram: '//www.instagram.com/steveliaocn'
-  github: '//github.com/kaeyleo'
+  github: 'https://github.com/'
+  email: 'mailto:no-reply@example.com'
 
 # Tags 设置标签
 recommend-tags: true # whether or not display recommend-tags on the sidebar
@@ -68,7 +66,7 @@ recommend-condition-size: 12 # a tag will be recommended if the size of it is mo
 # Build settings
 paginate: 6
 paginate_path: 'page:num'
-exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'README.md']
+exclude: ['dev', 'gulpfile.js', 'LICENSE', 'package.json', 'README.md', 'screenshot']
 
 # Markdown
 markdown: kramdown
@@ -76,12 +74,15 @@ highlighter: rouge
 kramdown:
   input: GFM
 
-# RSS
-RSS: false
+# RSS 订阅
+RSS: true
 
-# Permalink
+# Permalink 文章链接
 # See: https://github.com/kaeyleo/jekyll-theme-H2O/issues/35
 permalink: /:year/:month/:day/:title.html
 
-# Plugins
+# Plugins 插件
 plugins: [jekyll-paginate]
+
+# Copyright 版权声明
+copyright: '如无特殊声明，本站所有文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> 协议发布。'
