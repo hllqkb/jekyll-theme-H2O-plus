@@ -92,6 +92,14 @@
 .headerDown{
     top: 0;
 }
+.header1 {
+    background-color: rgba(255, 255, 255, .98);
+    box-shadow: 0 1px 12px rgba(0, 0, 0, .08);
+}
+.header2 {
+    background-color: transparent;
+    box-shadow: none;
+}
 
 .g-banner {
     height: $g-banner-h;
@@ -756,6 +764,10 @@
         color: #C8CDD3;
     }
 
+    .header1 {
+        background-color: rgba(33, 33, 33, 0.98)
+    }
+
     .post-header {
         .filter {
             opacity: .6;
@@ -764,7 +776,7 @@
 
     .article-item, .g-sidebar, .page-links, .search-card input, .search_result,
     .search_item, .article-item .post-tag, .tags-card .tag, .tags-list li,
-    .tags-list .tag, .info {
+    .tags-list .tag, .info-content {
         color: $color-f-dark;
         background-color: $color-dark-secondary;
         border-color: rgba(255, 255, 255, 0.1);

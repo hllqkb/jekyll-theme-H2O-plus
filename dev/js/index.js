@@ -36,10 +36,8 @@ $(document).ready(function(){
                 if(scrollTop > 3 * headerHeight) {
                     header.addClass('headerUp');
                 }
-                header.css({
-                    'background-color': 'rgba(255, 255, 255, .98)',
-                    'box-shadow': '0 1px 12px rgba(0, 0, 0, .08)'
-                });
+                header.addClass('header1');
+                header.removeClass('header2');
                 logo.css({
                     'background': 'url(/assets/icons/logo_' + themeStyle + '.svg) no-repeat center',
                     'background-size': '100% 100%'
@@ -48,10 +46,8 @@ $(document).ready(function(){
                 nav.addClass(navClassName);
             } else {
                 header.removeClass('headerUp');
-                header.css({
-                    'background-color': 'transparent',
-                    'box-shadow': 'none'
-                });
+                header.addClass('header2');
+                header.removeClass('header1');
                 logo.css({
                     'background': 'url(/assets/icons/logo.svg) no-repeat center',
                     'background-size': '100% 100%'
