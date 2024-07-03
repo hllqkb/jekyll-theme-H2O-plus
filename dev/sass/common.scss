@@ -914,3 +914,21 @@
     text-align: right;
     opacity: 80%;
 }
+
+.alert-danger {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    z-index: 100000;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+.alert-danger + * {
+    margin-top: 40px;
+}
+
+.alert-link {
+    color: blue;
+}

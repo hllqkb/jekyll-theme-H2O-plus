@@ -267,10 +267,12 @@ $(document).ready(function(){
     /**
      * Copy and copyright
      */
-    var copyrightRaw = $('#copyright').html();
-    $('#copyright').html($('#copyright').html().replaceAll('<br>', '\n'));
-    var copyright = '\n\n' + $('#copyright').text() + "原文：";
-    $('#copyright').html(copyrightRaw);
+    try {
+        var copyrightRaw = $('#copyright').html();
+        $('#copyright').html($('#copyright').html().replaceAll('<br>', '\n'));
+        var copyright = '\n\n' + $('#copyright').text() + "原文：";
+        $('#copyright').html(copyrightRaw);
+    } catch (error) {}
 
     function setClipboardData(str) {
         str += copyright + location.href;
