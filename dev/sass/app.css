@@ -240,6 +240,10 @@ a {
 .article-list .article-item:last-child {
   margin-bottom: 0;
 }
+.article-list .article-item .top-post {
+  background-color: red !important;
+  color: white !important;
+}
 .article-list .article-item .post-link {
   position: absolute;
   top: 0;

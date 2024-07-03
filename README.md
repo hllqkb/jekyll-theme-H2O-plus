@@ -11,6 +11,7 @@
 7. 将 Disqus 换成了 Giscus。
 8. 文章版权声明可在 `_config.yml` 中自定义
 9. 提供了 GitHub Workflow，快速创建 GitHub Pages 博客，无需完整复制主题。
+10. 支持置顶文章
 
 ### 如何使用本主题
 
@@ -181,6 +182,8 @@ cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
 tags: jekyll 前端开发 设计
 ---
 ```
+
+[Plus 版：你可以添加 `top: true` 来置顶文章]
 
 #### 导航
 

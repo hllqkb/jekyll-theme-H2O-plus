@@ -170,6 +170,10 @@
         &:last-child {
             margin-bottom: 0;
         }
+        .top-post {
+            background-color: red !important;
+            color: white !important;
+        }
         .post-link {
             position: absolute;
             top: 0;
