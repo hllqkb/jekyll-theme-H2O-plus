@@ -1,5 +1,7 @@
 ## Jekyll-Theme-H2O-Plus
 
+### 应急响应：[BootCDN/Staticfile 已被投毒](https://www.52pojie.cn/thread-1944970-1-1.html)，本主题所有资源均已更换 CDN！
+
 这是 [kaeyleo/jekyll-theme-H2O](https://github.com/kaeyleo/jekyll-theme-H2O) 的增强版，我增加/修改了以下功能：
 
 1. 博客界面更加紧凑。
