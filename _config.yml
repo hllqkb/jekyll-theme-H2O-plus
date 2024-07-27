@@ -82,7 +82,9 @@ RSS: true
 permalink: /:year/:month/:day/:title.html
 
 # Plugins 插件
-plugins: [jekyll-paginate]
+plugins: 
+  - jekyll-paginate
+  - jekyll-sitemap
 
 # Copyright 版权声明
 copyright: '如无特殊声明，本站所有文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> 协议发布。'

@@ -14,6 +14,7 @@
 8. 文章版权声明可在 `_config.yml` 中自定义
 9. 提供了 GitHub Workflow，快速创建 GitHub Pages 博客，无需完整复制主题。
 10. 支持置顶文章
+11. 增加 Sitemap
 
 ### 如何使用本主题
 
