@@ -1123,6 +1123,11 @@ a {
   color: blue;
 }
 
+iframe {
+  width: 100%;
+  height: 60vh;
+}
+
 @media screen and (min-width: 1920px) {
   .home-banner {
     height: 600px;
