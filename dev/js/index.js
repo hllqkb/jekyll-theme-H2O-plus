@@ -36,8 +36,10 @@ $(document).ready(function(){
                 if(scrollTop > 3 * headerHeight) {
                     header.addClass('headerUp');
                 }
-                header.addClass('header1');
-                header.removeClass('header2');
+                header.css({
+                    'background-color': 'rgba(255, 255, 255, .98)',
+                    'box-shadow': '0 1px 12px rgba(0, 0, 0, .08)'
+                });
                 logo.css({
                     'background': 'url(/assets/icons/logo_' + themeStyle + '.svg) no-repeat center',
                     'background-size': '100% 100%'
@@ -46,8 +48,10 @@ $(document).ready(function(){
                 nav.addClass(navClassName);
             } else {
                 header.removeClass('headerUp');
-                header.addClass('header2');
-                header.removeClass('header1');
+                header.css({
+                    'background-color': 'transparent',
+                    'box-shadow': 'none'
+                });
                 logo.css({
                     'background': 'url(/assets/icons/logo.svg) no-repeat center',
                     'background-size': '100% 100%'
@@ -98,7 +102,7 @@ $(document).ready(function(){
     $('.read-next-item section').each(function() {
         var n = $(this).height();
         var rn = $('.read-next-item').height();
-        $(this).css('margin-top', (rn - n) / 4 + 'px');
+        $(this).css('margin-top', (rn - n) / 2 + 'px');
         $(this).fadeIn();
     });
 
@@ -144,7 +148,6 @@ $(document).ready(function(){
         var self = this;
         var input = $('#search_input');
         var result = $('.search_result');
-        var isForm = $('.search-card').is('form');
 
         input.focus(function() {
             $('.icon-search').css('color', '#3199DB');
@@ -153,43 +156,13 @@ $(document).ready(function(){
 
         input.keyup(debounce(this.autoComplete));
 
-        if(isForm) {
-            function getQueryVariable(variable){
-                // From https://www.runoob.com/w3cnote/js-get-url-param.html
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i=0;i<vars.length;i++) {
-                    var pair = vars[i].split("=");
-                    if(pair[0] == variable){return decodeURI(pair[1]);}
-                }
-                return false;
+        $(document).click(function(e) {
+            if(e.target.id === 'search_input' || e.target.className === 'search_result' || e.target.className === 'search_item') {
+                return;
             }
-            let q = getQueryVariable('q');
-            if(q) {$('#search_input').val(q)}
-            $('#search_input').trigger('keyup');
-            $('#search_input').focus();
-            function ext(e) {
-                e.preventDefault();
-                if(['127.0.0.1', 'localhost'].includes(location.hostname)){
-                    alert("本地网站不支持全文搜索！");
-                }
-                else {
-                    window.open("https://www.bing.com/search?q=site:"+location.hostname+' '+$('#search_input').val(), '_blank');
-                }
-            }
-            $('.search-card').submit(ext);
-            $('.icon-search').click(ext);
-            $('.icon-search').css('cursor', 'pointer');
-        }
-        else {
-            $(document).click(function(e) {
-                if(e.target.id === 'search_input' || e.target.className === 'search_result' || e.target.className === 'search_item') {
-                    return;
-                }
-                $('.icon-search').css('color', '#CAD3DC');
-                result.hide();
-            });
-        }
+            $('.icon-search').css('color', '#CAD3DC');
+            result.hide();
+        });
     }
 
     Search.prototype.autoComplete = function() {
@@ -199,10 +172,6 @@ $(document).ready(function(){
             $('.icon-search').css('color', '#3199DB');
         } else {
             $('.icon-search').css('color', '#CAD3DC');
-        }
-
-        if($('.search-card').is('form')) {
-            history.replaceState('', '', location.pathname+'?q='+keywords);
         }
 
         $.getJSON('../../search.json').done(function(data) {
@@ -243,39 +212,26 @@ $(document).ready(function(){
      * Night mode
      */
     function nightMode() {
-        // From https://juejin.cn/post/7080567228029992996
-        var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        function change(evt) {
-            $('body').addClass('no-transition');
-            if (evt.matches){
-                $('body').addClass('night-mode');
-            }
-            else {
-                $('body').removeClass('night-mode');
-            }
-            setTimeout(()=>{$('body').removeClass('no-transition')}, 100);
+        var el = $('body');
+        var className = 'night-mode';
+
+        var date = new Date();
+        var hour = date.getHours();
+
+        if (hour <= 6 || hour >= 18) {
+            el.addClass(className);
         }
-        darkModeQuery.addEventListener('change', change);
-        change(darkModeQuery);
     }
 
-    // if ($('#nm-switch').val() === 'true') {
-    //     forceNightMode();
-    // }
-    nightMode();
+    if ($('#nm-switch').val() === 'true') {
+        nightMode();
+    }
 
     /**
      * Copy and copyright
      */
-    try {
-        var copyrightRaw = $('#copyright').html();
-        $('#copyright').html($('#copyright').html().replaceAll('<br>', '\n'));
-        var copyright = '\n\n' + $('#copyright').text() + "原文：";
-        $('#copyright').html(copyrightRaw);
-    } catch (error) {}
-
     function setClipboardData(str) {
-        str += copyright + location.href;
+        str += '\n\n著作权归作者所有。\n商业转载请联系作者获得授权,非商业转载请注明出处。\n原文: ' + location.href;
         $('.post-content').on('copy', function(e) {
             var data = window.clipboardData || e.originalEvent.clipboardData;
             data.setData('text/plain', str);
