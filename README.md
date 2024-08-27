@@ -1,3 +1,4 @@
+# 本博客由水啊，也就是hllqk修复，仅仅留作纪念。。。2024.8.27，新博客https://b.hllqk.cn/
 ## jekyll-theme-H2O
 
 基于Jekyll的博客主题模板，简洁轻量。
